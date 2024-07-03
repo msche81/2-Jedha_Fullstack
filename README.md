@@ -12,5 +12,7 @@ Basically, at the end of this program, you will be comfortable with all the tech
 Bootcamp duration: 01.07.24 > 02.02.25
 
 
+dsfs-od-08
+
 
 On-Demand Programm. Normal bootcamp duration: 3 months
