@@ -19,6 +19,7 @@ pyarrow = "^16.1.0"
 jupyter = "^1.0.0"
 pytest = "^8.2.2"
 ipykernel = "^6.29.5"
+scrapy = "^2.11.2"
 
 
 [build-system]
