@@ -21,6 +21,7 @@ pytest = "^8.2.2"
 ipykernel = "^6.29.5"
 scrapy = "^2.11.2"
 beautifulsoup4 = "^4.12.3"
+s3fs = "^2024.6.1"
 
 
 [build-system]
