@@ -34,7 +34,7 @@ class YelpSpider(scrapy.Spider):
             
         # Select the NEXT button and store it in next_page
         try:
-            next_page = response.xpath('/html/body/yelp-react-root/div[1]/div[4]/div/div/div[1]/div/main/div/ul/li[13]/div/div[1]/div/div[11]/span/a').attrib["href"] 
+            next_page = response.xpath('//*[@id="main-content"]/ul/li[13]/div/button/span/a').attrib["href"]
         except KeyError:
             logging.info('No next page. Terminating crawling process.')
         else:
