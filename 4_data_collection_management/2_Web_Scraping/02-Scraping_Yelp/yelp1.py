@@ -16,20 +16,33 @@ class YelpSpider(scrapy.Spider):
         # FormRequest used to make a search in Paris
         return scrapy.FormRequest.from_response(
             response,
-            formdata={'find_desc': 'restaurant japonais', 'search_location': 'paris'},
+            formdata={'find_desc': 'restaurant japonais', 'dropperText_Mast': 'paris'},
             callback=self.after_search
         )
 
     # Callback used after login
+    #def after_search(self, response):
+        
+        #names = response.xpath('//*[@id="main-content"]/ul/li[3]/div[1]/div/div[2]/div[1]/div[1]/div[1]/div/div/h3/a/text()')
+        #urls = response.xpath('//*[@id="main-content"]/ul/li[3]/div[1]/div/div[2]/div[1]/div[1]/div[1]/div/div/h3/a')
+        
+        #for name, url in zip(names,urls):
+            #yield {
+                #'name': name.get(),
+                #'url': url.attrib["href"]
+            #}
+
+   # Callback used after login
     def after_search(self, response):
-        
-        names = response.xpath('//*[@id="main-content"]/ul/li[3]/div[1]/div/div[2]/div[1]/div[1]/div[1]/div/div/h3/a/text()')
-        urls = response.xpath('//*[@id="main-content"]/div/ul/li/div/div/div/div[2]/div[1]/div[1]/div[1]/div/div/h3/span/a')
-        
-        for name, url in zip(names,urls):
+    # Note: supprime l'index [3] pour sélectionner tous les éléments
+
+        names = response.xpath('//*[@id="main-content"]/ul/li/div[1]/div/div[2]/div[1]/div[1]/div[1]/div/div/h3/a/text()').getall()
+        urls = response.xpath('//*[@id="main-content"]/ul/li/div[1]/div/div[2]/div[1]/div[1]/div[1]/div/div/h3/a/@href').getall()
+    
+        for name, url in zip(names, urls):
             yield {
-                'name': name.get(),
-                'url': url.attrib["href"]
+                'name': name,
+                'url': url
             }
 
 # Name of the file where the results will be saved

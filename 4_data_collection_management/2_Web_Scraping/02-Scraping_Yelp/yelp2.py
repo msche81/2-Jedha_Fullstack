@@ -22,14 +22,14 @@ class YelpSpider(scrapy.Spider):
 
     # Callback used after login
     def after_search(self, response):
-        
-        names = response.xpath('//*[@id="main-content"]/div/ul/li/div/div/div/div[2]/div[1]/div[1]/div[1]/div/div/h3/span/a/text()')
-        urls = response.xpath('//*[@id="main-content"]/div/ul/li/div/div/div/div[2]/div[1]/div[1]/div[1]/div/div/h3/span/a')
-        
-        for name, url in zip(names,urls):
+
+        names = response.xpath('//*[@id="main-content"]/ul/li/div[1]/div/div[2]/div[1]/div[1]/div[1]/div/div/h3/a/text()').getall()
+        urls = response.xpath('//*[@id="main-content"]/ul/li/div[1]/div/div[2]/div[1]/div[1]/div[1]/div/div/h3/a/@href').getall()
+    
+        for name, url in zip(names, urls):
             yield {
-                'name': name.get(),
-                'url': url.attrib["href"]
+                'name': name,
+                'url': url
             }
             
         # Select the NEXT button and store it in next_page
