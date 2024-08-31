@@ -24,6 +24,7 @@ beautifulsoup4 = "^4.12.3"
 s3fs = "^2024.6.1"
 scrapy-user-agents = "^0.1.1"
 scrapy-rotating-proxies = "^0.6.2"
+requests = "^2.32.3"
 
 
 [build-system]
