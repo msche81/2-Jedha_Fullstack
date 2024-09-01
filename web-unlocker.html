@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TECHSPORT - Site fictif</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
+
+<script src="script.js"></script>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  header {
+    background-color: black;
+    color: white;
+    padding: 18px 0px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .header-container {
+    background-color: black;
+    display: flex;
+    padding: 0px 25px;
+    gap: 30px;
+    align-items: center;
+    flex-grow: 1;
+    max-width: 1100px;
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+  }
+
+  .page-container {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 25px;
+    max-width: 1000px;
+    margin-bottom: 40px;
+  }
+
+  #product-page {
+    padding: 20px 0px;
+    background-color: white;
+    max-width: 900px;
+    align-self: center;
+    gap: 10px;
+  }
+  .product-image {
+    width: 40%;
+  }
+  .product-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  .product-details {
+    width: 60%;
+    padding-left: 20px;
+  }
+  #productTitle {
+    display: block;
+    font-size: 24px;
+    color: #111;
+    margin-bottom: 18px;
+  }
+  .product-rating {
+    color: #ffa500; /* star rating color */
+    margin-bottom: 35px;
+  }
+  .product-price {
+    font-size: 36px;
+    color: #B12704; /* price color */
+    margin-bottom: 10px;
+  }
+  .product-description {
+    color: #565959;
+    line-height: 1.5;
+    padding: 0px 40px;
+  }
+
+  #customer-review-text {
+    color: #444444;
+    font-size: 0.9em;
+    padding-left: 15px;
+  }
+
+  .price-decimal {
+    display: none;
+  }
+
+  .price-fraction, .price-symbol {
+    font-size: 20px;
+    vertical-align: top;
+    padding-left: 2px;
+    padding-top: 3px;
+    display:inline-block;
+  }
+
+  h2 {
+    font-size: 18px;
+    color: black;
+  }
+
+  #product-description {
+    font-size: 16px;
+    line-height: 1.6em;
+  }
+
+  .display-none {
+    display: none;
+  }
+
+  .display-flex {
+    display: flex;
+  }
+
+  .captcha-container {
+    display: flex;
+    margin-top: 60px;
+    justify-content: center;
+  }
+
+  .captcha {
+    border: 1px solid #999999;
+    width: 300px;
+    padding: 30px;
+    background-color: #F8F8F8;
+  }
+
+  .captcha-title {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
+
+  .flex-grow {
+    flex-grow: 1;
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+
+  .flex-justify-center {
+    justify-content: center;
+  }
+
+  .login {
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .search-bar {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 500px;
+        height: 35px;
+        border-radius: 20px; /* Cela donne des contours totalement arrondis */
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        box-sizing: border-box;
+        background-color: white;
+    }
+
+    .search-bar input {
+        border: none;
+        outline: none;
+        flex-grow: 1;
+        font-size: 12px;
+    }
+
+    .search-bar img {
+        height: 20px;
+        width: 20px;
+        cursor: pointer;
+    }
+
+    .fil-ariane {
+        font-size: 14px;
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    .price-and-button-container {
+        display: flex;
+        gap: 25px;
+    }
+
+    .add-cart-button {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        padding: 8px 38px;
+        box-sizing: border-box;
+        background-color: red;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .add-cart-button:hover {
+        background-color: #E00000
+    }
+
+    .advantages-container {
+        background-color: #F7F7F7;
+        margin-top: 15px;
+        padding: 15px 25px;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 2em;
+    }
+
+    .suggested-products-section {
+        background-color: #F7F7F7;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 10px;
+        padding-bottom: 60px;
+    }
+
+    .suggested-products-container {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 25px;
+        max-width: 1000px;
+        width: 100%;
+    }
+
+    .suggested-products-list-container {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      gap: 20px;
+    }
+
+    .suggested-product-card {
+      width: 280px;
+      border: 1px solid #E0E0E0;
+      padding: 16px;
+      text-align: left;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .suggested-product-card:hover {
+      border: 1px solid #ffa500;
+    }
+
+    .suggested-product-image {
+      height: 200px;
+      padding-bottom: 16px;
+      object-fit:contain;
+      mix-blend-mode: multiply;
+    }
+
+    .suggested-title {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1; /* number of lines to show */
+              line-clamp: 1; 
+      -webkit-box-orient: vertical;
+    }
+
+    .suggested-product-rating {
+      font-size: 14px;
+    }
+
+    .suggested-product-price {
+      zoom: 0.8;
+    }
+
+    .footer {
+      color: white;
+      background-color: black;
+      width: 100%;
+      padding: 18px 0px;
+      display: flex;
+    }
+
+    .footer-container {
+      font-size: 13px;
+      background-color: black;
+      display: flex;
+      flex-direction:column;
+      padding: 0px 25px;
+      flex-grow: 1;
+      max-width: 1100px;
+      gap: 15px;
+    }
+
+    .footer-logo {
+      font-size: 30px;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo">TECHSPORT</div>
+        <div class="flex flex-grow flex-justify-center">
+            <div class="search-bar">
+                <input type="text" placeholder="montre sport homme">
+                <img src="https://codeavecjonathan.com/scraping/techsport/search-icon.png" alt="Search Icon">
+            </div>
+        </div>
+        <div class="flex login" style="gap: 10px;">
+            <img src="https://codeavecjonathan.com/scraping/techsport/profile-icon.png" height="24">
+            <div>
+                Bienvenue<br>
+                <b>Se connecter / S'inscrire</b>    
+            <div>
+        </div>
+    </div>
+</header>
+
+<noscript>
+    <div class="captcha-container">
+        <div class="captcha">
+            <div class="captcha-title">Captcha</div>
+            Ce site doit vérifier que vous n'êtes pas un bot.
+        </div>
+    </div>
+</noscript>
+
+<div class="page-container">
+    <div class="fil-ariane">
+        Accueil  &nbsp/&nbsp  Montres sport  &nbsp/&nbsp  <b>Montres sport homme</b>
+    </div>
+    <div id="product-page" class="display-none">
+        <div class="product-image">
+            <img draggable="false">
+        </div>
+        <div class="product-details">
+            <span id="productTitle"></span>
+            <div class="product-rating">
+              <span id="rating-popover" title="">
+              <!-- Étoiles de notation (à remplacer par des images ou des icônes si disponible) -->
+              </span>
+              <span id="customer-review-text"></span>
+            </div>
+            <div class="price-and-button-container">
+                <div class="product-price">
+                    <span class="price-whole"><span class="price-decimal">,</span></span><span class="price-fraction"></span><span class="price-symbol"></span>
+                </div>
+                <div class="add-cart-button">
+                    Ajouter au panier
+                </div>
+            </div>
+            <div class="advantages-container">
+                ✔&nbsp  En stock<br>
+                ✔&nbsp  Livraison gratuite<br>
+                ✔&nbsp  Garantie 1 an offerte<br>
+            </div>
+        </div>
+    </div>
+    <div class="product-description">
+        <h2>Description du produit :</h2>
+        <div id="product-description">
+            <p><span>
+            </span></p>
+        </div>
+    </div>
+</div>
+<div class="suggested-products-section">
+    <div class="suggested-products-container">
+        <h2 style="align-self: start; flex-grow: 1;">Produits similaires :</h2>
+        <div class="suggested-products-list-container">
+
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+  <div class="footer-container">
+    <div class="logo footer-logo">TECHSPORT</div>
+    Site ecommerce fictif, à but éducatif pour apprendre le scraping en programmation.<br>
+    Toutes les données de ce site (textes et images) ont été générées par l'intelligence artificielle (GPT4 et Midjourney).
+  </div>
+</div>
+
+</body>
+</html>

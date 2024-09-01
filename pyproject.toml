@@ -26,6 +26,7 @@ scrapy-user-agents = "^0.1.1"
 scrapy-rotating-proxies = "^0.6.2"
 requests = "^2.32.3"
 html5lib = "^1.1"
+playwright = "^1.46.0"
 
 
 [build-system]
