@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "s3fs-env"
+version = "0.1.0"
+description = ""
+authors = ["Marie-Sophie Chenevier <mschenevier@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+s3fs = "^2024.9.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
