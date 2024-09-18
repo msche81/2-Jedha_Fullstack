@@ -34,6 +34,8 @@ fuzzywuzzy = "^0.18.0"
 plotly = "^5.24.0"
 boto3 = "^1.35.19"
 sqlalchemy = "^2.0.35"
+python-dotenv = "^1.0.1"
+mysql-connector-python = "^9.0.0"
 
 
 [build-system]
