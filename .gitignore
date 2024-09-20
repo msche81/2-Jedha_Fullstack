@@ -1,2 +1,25 @@
-.aws/credentials
-/Users/marie-sophiechenevier/Dropbox/8-Jedha/GitHub/2-Jedha_Fullstack/4_data_collection_management/4_ETL_processes/credentials.env
+# Ignore virtual environments
+.venv/
+env/
+*.env
+
+# Ignore Python cache files
+*.pyc
+__pycache__/
+
+# Ignore macOS system files
+.DS_Store
+
+# Specific ignores for the 2-Jedha_Fullstack repository
+
+# Ignore the Speed Dating Data Key document
+/3_exploratory_data_analysis/5_project_speed_dating/Speed+Dating+Data+Key.doc
+
+# Ignore credentials.env in ETL processes folder
+/4_data_collection_management/4_ETL_processes/credentials.env
+
+# Ignore the entire 'Autres_tuto' folder
+/Autres_tuto/
+
+# Ignore AWS credentials at the root
+/.aws/credentials
