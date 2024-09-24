@@ -1,0 +1,18 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "lambda:CreateFunction",
+        "lambda:InvokeFunction",
+        "lambda:DeleteFunction",
+        "iam:PassRole",
+        "iam:CreateRole",
+        "cloudformation:*",
+        "s3:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

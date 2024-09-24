@@ -1,0 +1,25 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+    "BucketName": {
+      "Type": "String",
+      "Default": "mschenevier-databricks-bucket",
+      "Description": "Nom du bucket S3"
+    }
+  },
+  "Resources": {
+    "MyS3Bucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": { "Ref": "BucketName" }
+      }
+    },
+    "MyDatabricksWorkspace": {
+      "Type": "AWS::Databricks::Workspace",
+      "Properties": {
+        "WorkspaceName": "mschenevier-databricks-workspace",
+        "S3Bucket": { "Ref": "MyS3Bucket" }
+      }
+    }
+  }
+}
