@@ -23,3 +23,6 @@ __pycache__/
 
 # Ignore AWS credentials at the root
 /.aws/credentials
+
+# Ignore Databricks credentials in Big Data
+/5_big-data/1-Distributed-Computing-RDD/config.py
