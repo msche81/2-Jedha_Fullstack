@@ -1,0 +1,13 @@
+id,Country,Age,Salary,Purchased,useless_col,almost_empty
+0,France,44.0,72000,No,useless,
+1,Spain,27.0,48000,Yes,useless,40
+2,Germany,30.0,54000,No,useless,
+3,Spain,38.0,61000,No,useless,20
+4,Germany,40.0,69000,Yes,useless,
+5,France,35.0,58000,Yes,useless,
+6,Spain,,52000,No,useless,
+7,France,48.0,79000,Yes,useless,
+8,Germany,50.0,83000,No,useless,
+9,France,37.0,67000,Yes,useless,
+10,France,-10.0,32000,Yes,useless,
+11,Spain,67.0,1000000000,Yes,useless,
