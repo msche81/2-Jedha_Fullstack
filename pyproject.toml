@@ -38,6 +38,7 @@ python-dotenv = "^1.0.1"
 mysql-connector-python = "^9.0.0"
 databricks-cli = "^0.18.0"
 pyspark = "^3.5.3"
+kaleido = "0.2.1"
 
 
 [build-system]
