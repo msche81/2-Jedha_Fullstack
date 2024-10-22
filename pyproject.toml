@@ -39,6 +39,7 @@ mysql-connector-python = "^9.0.0"
 databricks-cli = "^0.18.0"
 pyspark = "^3.5.3"
 kaleido = "0.2.1"
+geopy = "^2.4.1"
 
 
 [build-system]
