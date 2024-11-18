@@ -41,6 +41,7 @@ pyspark = "^3.5.3"
 kaleido = "0.2.1"
 geopy = "^2.4.1"
 mlxtend = "^0.23.1"
+xgboost = "^2.1.2"
 
 
 [build-system]
