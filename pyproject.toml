@@ -43,6 +43,7 @@ geopy = "^2.4.1"
 mlxtend = "^0.23.1"
 xgboost = "^2.1.2"
 s3fs = "^2024.10.0"
+yfinance = "^0.2.50"
 
 
 [build-system]
