@@ -45,6 +45,7 @@ xgboost = "^2.1.2"
 s3fs = "^2024.10.0"
 yfinance = "^0.2.50"
 prophet = "^1.1.6"
+holidays = "^0.61"
 
 
 [build-system]
