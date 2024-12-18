@@ -1573,6 +1573,22 @@ files = [
 six = "*"
 
 [[package]]
+name = "graphviz"
+version = "0.20.3"
+description = "Simple Python interface for Graphviz"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "graphviz-0.20.3-py3-none-any.whl", hash = "sha256:81f848f2904515d8cd359cc611faba817598d2feaac4027b266aa3eda7b3dde5"},
+    {file = "graphviz-0.20.3.zip", hash = "sha256:09d6bc81e6a9fa392e7ba52135a9d49f1ed62526f96499325930e87ca1b5925d"},
+]
+
+[package.extras]
+dev = ["flake8", "pep8-naming", "tox (>=3)", "twine", "wheel"]
+docs = ["sphinx (>=5,<7)", "sphinx-autodoc-typehints", "sphinx-rtd-theme"]
+test = ["coverage", "pytest (>=7,<8.1)", "pytest-cov", "pytest-mock (>=3)"]
+
+[[package]]
 name = "greenlet"
 version = "3.0.3"
 description = "Lightweight in-process concurrent programming"
@@ -4801,6 +4817,25 @@ files = [
 dev = ["tox"]
 
 [[package]]
+name = "pydot"
+version = "3.0.3"
+description = "Python interface to Graphviz's Dot"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "pydot-3.0.3-py3-none-any.whl", hash = "sha256:9b0b3081e0bd362d0c61148da10eb1281ec80089b02a28cf06f9093843986f3d"},
+    {file = "pydot-3.0.3.tar.gz", hash = "sha256:5e009d97b2fff92b7a88f09ec1fd5b163f07f3b10469c927d362471d6faa0d50"},
+]
+
+[package.dependencies]
+pyparsing = ">=3.0.9"
+
+[package.extras]
+dev = ["chardet", "parameterized", "ruff"]
+release = ["zest.releaser[recommended]"]
+tests = ["chardet", "parameterized", "pytest", "pytest-cov", "pytest-xdist[psutil]", "ruff", "tox"]
+
+[[package]]
 name = "pyee"
 version = "12.0.0"
 description = "A rough port of Node.js's EventEmitter to Python with a few tricks of its own"
@@ -7180,4 +7215,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "0d0b73ed14da3aac72dd7f2423adbb1491f908f26393f7f945560707e68985b8"
+content-hash = "4f4b6f001596952a1a68577db76584515c8ed0d88d5014a0ea64ef15e73f1ada"

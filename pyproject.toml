@@ -49,6 +49,8 @@ holidays = "^0.61"
 spacy = "^3.8.2"
 wordcloud = "^1.9.4"
 tensorflow = "^2.18.0"
+pydot = "^3.0.3"
+graphviz = "^0.20.3"
 
 
 [build-system]
