@@ -54,6 +54,7 @@ graphviz = "^0.20.3"
 imageio = "^2.36.1"
 scikit-image = "^0.25.0"
 tensorflow-docs = {git = "https://github.com/tensorflow/docs"}
+mlflow = "^2.19.0"
 
 
 [build-system]
