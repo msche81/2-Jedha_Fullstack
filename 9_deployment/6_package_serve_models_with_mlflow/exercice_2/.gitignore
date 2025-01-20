@@ -1,0 +1,27 @@
+# Ignorer les fichiers secrets et credentials
+secrets.sh
+
+# Ignorer les artefacts et logs de MLflow
+mlruns/
+mlflow.db
+
+# Ignorer les fichiers temporaires de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorer les fichiers de logs
+*.log
+
+# Ignorer les fichiers de dataset téléchargés (au cas où)
+*.csv
+*.tsv
+*.json
+
+# Ignorer les fichiers générés par Docker
+*.dockerignore
+Dockerfile
+
+# Ignorer les clés SSH privées
+*.pem

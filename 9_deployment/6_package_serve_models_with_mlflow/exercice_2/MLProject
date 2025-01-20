@@ -1,0 +1,11 @@
+name: mlflow-disneyland
+
+docker_env:
+  image: mlflow-disneyland
+
+entry_points:
+  main:
+    parameters:
+      epochs: {type: int, default: 5}
+      lr: {type: float, default: 0.001}
+    command: "python train.py --epochs {epochs} --lr {lr}"
