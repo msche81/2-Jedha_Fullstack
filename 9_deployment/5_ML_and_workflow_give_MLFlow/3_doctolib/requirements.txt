@@ -8,3 +8,7 @@ seaborn
 plotly
 mlflow
 psycopg2-binary
+jupyter
+openpyxl
+huggingface_hub
+transformers
