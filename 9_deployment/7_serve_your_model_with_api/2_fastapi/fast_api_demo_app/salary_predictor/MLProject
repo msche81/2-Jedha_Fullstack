@@ -1,0 +1,15 @@
+name: salary_estimator
+docker_env:
+  image: jedha/salary_estimator
+  volumes: ["$(pwd):/home/app"]
+  environment: [
+    "MLFLOW_TRACKING_URI",
+    "AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY",
+    "BACKEND_STORE_URI",
+    "ARTIFACT_ROOT",
+    "MLFLOW_EXPERIMENT_NAME"
+  ]
+entry_points:
+  main:
+    command: "python train.py"
