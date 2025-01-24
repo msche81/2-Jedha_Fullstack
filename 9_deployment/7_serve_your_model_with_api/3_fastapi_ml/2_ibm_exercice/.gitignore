@@ -1,0 +1,11 @@
+# Ignore AWS credentials
+.aws/
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore other files/folders (comme le dossier 'src')
+src/
+aws/
