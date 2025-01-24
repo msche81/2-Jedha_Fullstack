@@ -1,0 +1,9 @@
+.git
+.DS_Store
+*.pyc
+*.pyo
+*.pyd
+__pycache__
+venv
+.env
+*.log
