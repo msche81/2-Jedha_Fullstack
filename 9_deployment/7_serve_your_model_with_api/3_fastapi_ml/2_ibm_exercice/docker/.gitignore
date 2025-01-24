@@ -1,0 +1,6 @@
+src/
+aws/bucket_policy.json
+aws/credentials
+__pycache__/
+*.pyc
+*.pyo
