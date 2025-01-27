@@ -1,5 +1,5 @@
 artifact_uri: file:///Users/marie-sophiechenevier/Library/CloudStorage/Dropbox/8-Jedha/GitHub/2-Jedha_Fullstack/10_demo_day_project/mlruns/882382322595379740/98f2ca59240e48ebb93d9d958ddccad8/artifacts
-end_time: null
+end_time: 1737990030784
 entry_point_name: ''
 experiment_id: '882382322595379740'
 lifecycle_stage: active
@@ -10,6 +10,6 @@ source_name: ''
 source_type: 4
 source_version: ''
 start_time: 1737989745118
-status: 1
+status: 3
 tags: []
 user_id: marie-sophiechenevier
