@@ -8,4 +8,3 @@ __pycache__/
 
 # Ignore other files/folders (comme le dossier 'src')
 src/
-aws/
