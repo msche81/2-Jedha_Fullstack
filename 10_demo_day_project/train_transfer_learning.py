@@ -59,7 +59,7 @@ with mlflow.start_run():
         train_generator,
         epochs=num_epochs,
         validation_data=valid_generator,
-	verbose=1  # 🔍 Afficher les logs à chaque epoch
+	    verbose=1  # 🔍 Afficher les logs à chaque epoch
     )
 
     # 👉 Enregistrement des métriques finales

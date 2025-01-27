@@ -12,62 +12,48 @@ def get_dataset_path():
         return "/content/dataset_skin_types/Oily-Dry-Skin-Types"
     else:
         print("🔍 Détection : Environnement Local (Mac / Docker)")
-        return "Oily-Dry-Skin-Types"  # ✅ Chemin générique pour Mac ET Docker
+        return os.path.join(os.getcwd(), "Oily-Dry-Skin-Types")  # ✅ Path dynamique
 
-# 📌 Chargement des datasets
-def load_datasets(dataset_path, img_size=(224, 224), batch_size=32):
-    train_ds = tf.keras.preprocessing.image_dataset_from_directory(
-        dataset_path + "/train", image_size=img_size, batch_size=batch_size, label_mode="categorical"
-    )
-    valid_ds = tf.keras.preprocessing.image_dataset_from_directory(
-        dataset_path + "/valid", image_size=img_size, batch_size=batch_size, label_mode="categorical"
-    )
-    test_ds = tf.keras.preprocessing.image_dataset_from_directory(
-        dataset_path + "/test", image_size=img_size, batch_size=batch_size, label_mode="categorical"
-    )
-    return train_ds, valid_ds, test_ds
+# 📌 Vérification de l'existence du dataset
+dataset_path = get_dataset_path()
+if not os.path.exists(dataset_path):
+    raise FileNotFoundError(f"❌ ERREUR : Le dataset {dataset_path} est introuvable !")
 
-# 📌 Normalisation
-def normalize_datasets(train_ds, valid_ds, test_ds):
-    train_ds = train_ds.map(lambda x, y: (x / 255.0, y))
-    valid_ds = valid_ds.map(lambda x, y: (x / 255.0, y))
-    test_ds = test_ds.map(lambda x, y: (x / 255.0, y))
-    return train_ds, valid_ds, test_ds
-
-# 📌 Augmentation des images
+# 📌 Création des générateurs d'images
 def get_image_generators():
     train_datagen = ImageDataGenerator(
+        rescale=1./255,  # 📌 Normalisation entre 0 et 1
         rotation_range=40, width_shift_range=0.2, height_shift_range=0.2,
         shear_range=0.2, zoom_range=0.2, brightness_range=[0.7, 1.3],
         channel_shift_range=50.0, horizontal_flip=True, fill_mode='nearest'
     )
-    valid_datagen = ImageDataGenerator()
-    test_datagen = ImageDataGenerator()
-    return train_datagen, valid_datagen, test_datagen
+    valid_test_datagen = ImageDataGenerator(rescale=1./255)  # Pas d'augmentation sur validation et test
 
-# 📌 Création des générateurs
+    return train_datagen, valid_test_datagen
+
+# 📌 Chargement des datasets
 def get_data_generators(dataset_path, img_size=(224, 224), batch_size=32):
-    train_datagen, valid_datagen, test_datagen = get_image_generators()
-    
+    train_datagen, valid_test_datagen = get_image_generators()
+
     train_generator = train_datagen.flow_from_directory(
-        dataset_path + "/train", target_size=img_size, batch_size=batch_size, class_mode="categorical"
+        os.path.join(dataset_path, "train"), target_size=img_size,
+        batch_size=batch_size, class_mode="categorical"
     )
-    valid_generator = valid_datagen.flow_from_directory(
-        dataset_path + "/valid", target_size=img_size, batch_size=batch_size, class_mode="categorical"
+    valid_generator = valid_test_datagen.flow_from_directory(
+        os.path.join(dataset_path, "valid"), target_size=img_size,
+        batch_size=batch_size, class_mode="categorical"
     )
-    test_generator = test_datagen.flow_from_directory(
-        dataset_path + "/test", target_size=img_size, batch_size=batch_size, class_mode="categorical"
+    test_generator = valid_test_datagen.flow_from_directory(
+        os.path.join(dataset_path, "test"), target_size=img_size,
+        batch_size=batch_size, class_mode="categorical"
     )
-    
+
     return train_generator, valid_generator, test_generator
 
-# 📌 Fonction principale pour récupérer les datasets
+# 📌 Fonction principale
 def get_data(batch_size=32, img_size=(224, 224)):
     dataset_path = get_dataset_path()
-    train_ds, valid_ds, test_ds = load_datasets(dataset_path, img_size, batch_size)
-    train_ds, valid_ds, test_ds = normalize_datasets(train_ds, valid_ds, test_ds)
     train_generator, valid_generator, test_generator = get_data_generators(dataset_path, img_size, batch_size)
-    
     return train_generator, valid_generator, test_generator, dataset_path
 
 if __name__ == "__main__":

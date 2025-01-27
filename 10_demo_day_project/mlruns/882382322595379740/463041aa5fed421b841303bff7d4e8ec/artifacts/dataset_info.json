@@ -1,0 +1,10 @@
+{
+  "train_samples": 2756,
+  "valid_samples": 262,
+  "test_samples": 134,
+  "batch_size": 32,
+  "img_size": [
+    224,
+    224
+  ]
+}
