@@ -1,5 +1,5 @@
 # Ignore AWS credentials
-.aws/
+.aws/credentials
 
 # Ignore compiled Python files
 __pycache__/
