@@ -58,6 +58,7 @@ mlflow = "^2.19.0"
 uvicorn = "^0.34.0"
 fastapi = "^0.115.6"
 kaggle = "^1.6.17"
+streamlit = "^1.41.1"
 
 
 [build-system]
