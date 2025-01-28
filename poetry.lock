@@ -1242,6 +1242,44 @@ files = [
 ]
 
 [[package]]
+name = "deeplake"
+version = "4.1.6"
+description = "Data Lake for Multi-Modal AI Search"
+optional = false
+python-versions = "*"
+files = [
+    {file = "deeplake-4.1.6-cp310-cp310-macosx_10_12_x86_64.whl", hash = "sha256:0f26eb9bcf6d8e36eba26dfb17907159e859a1a04d331eef9856f80b9ff50068"},
+    {file = "deeplake-4.1.6-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:560b2de64a3a4f36c804c449d1e09ee62a66483ca18d2facd8af47540d936a35"},
+    {file = "deeplake-4.1.6-cp310-cp310-manylinux2014_aarch64.whl", hash = "sha256:5dbde5379443b71f0beaa8ac3aeac1060c8c6e43a3a5f3a4885f3d3ed3ea6620"},
+    {file = "deeplake-4.1.6-cp310-cp310-manylinux2014_x86_64.whl", hash = "sha256:2d4266c16ef8a964dda3cb7b747ffaa6065e041ce56f36c645ada1c9c9754a89"},
+    {file = "deeplake-4.1.6-cp311-cp311-macosx_10_12_x86_64.whl", hash = "sha256:21879ec718245b0544974839ab97c176721e9158d844becae3e7430744c79a53"},
+    {file = "deeplake-4.1.6-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:6172defd1b380a8066c9729bcfc14929cd9dc84a52ca2ebbc47342b408fcaa6c"},
+    {file = "deeplake-4.1.6-cp311-cp311-manylinux2014_aarch64.whl", hash = "sha256:fa7e389af20dc30f300d3d331bc4113583a2005499d264a83e436b4ae45fdabc"},
+    {file = "deeplake-4.1.6-cp311-cp311-manylinux2014_x86_64.whl", hash = "sha256:25e0c33730c7c6a5991b1f5bf691f013dcee38f7720f3ece534fbc7bdaf8e05d"},
+    {file = "deeplake-4.1.6-cp312-cp312-macosx_10_12_x86_64.whl", hash = "sha256:dcbf19eb779119ddf67faeca39a3220891b648f90c8ae14aeeabfa07705a0d41"},
+    {file = "deeplake-4.1.6-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:9b10464b0c889a33943b4c9ccd02ed8406c46c8db0b792247e621d40fca82fd6"},
+    {file = "deeplake-4.1.6-cp312-cp312-manylinux2014_aarch64.whl", hash = "sha256:90e63f29536a834d214a80590643979ce75c785e8bcfecfeb478c9f34697b809"},
+    {file = "deeplake-4.1.6-cp312-cp312-manylinux2014_x86_64.whl", hash = "sha256:cf453995fda94c3d329ac12fbdcb5108a785221574ee4ad164304487794ec65c"},
+    {file = "deeplake-4.1.6-cp313-cp313-macosx_10_12_x86_64.whl", hash = "sha256:8c41974384fff67f925378101eba4107f7e59eafb92f9d1c912a45498fdef67c"},
+    {file = "deeplake-4.1.6-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:4760a3d8163ccba90d96135bc18f0dd4a977201d78d8782b4a9ffb6df5b3849a"},
+    {file = "deeplake-4.1.6-cp313-cp313-manylinux2014_aarch64.whl", hash = "sha256:d660cc6fbf7991e2b0f069c155b7de2b297cac1ed2b955ba13b21acb05939bd8"},
+    {file = "deeplake-4.1.6-cp313-cp313-manylinux2014_x86_64.whl", hash = "sha256:458478de542e2bf8f15df3173043e56cf16dffae903a85879bd956671b68239d"},
+    {file = "deeplake-4.1.6-cp37-cp37m-manylinux2014_aarch64.whl", hash = "sha256:e28f5533a2825ab901b728c10165443a23c87b8399780916adc21369875c8bbb"},
+    {file = "deeplake-4.1.6-cp37-cp37m-manylinux2014_x86_64.whl", hash = "sha256:1753c0a735c14961c245c9bce5bf5bab861c9626004f9f2f25fde196cd5585a0"},
+    {file = "deeplake-4.1.6-cp38-cp38-macosx_10_12_x86_64.whl", hash = "sha256:a5607142f5d8e9bdcb170e93296c87cd32441b5db55b2a9f32167c3023b164a6"},
+    {file = "deeplake-4.1.6-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:b1810022033fa7825694021a619799179290bea6a7bd48cd41bd7c5b401a978c"},
+    {file = "deeplake-4.1.6-cp38-cp38-manylinux2014_aarch64.whl", hash = "sha256:64ff611f19d0b5f0ecce286503aed3bd9fb432b2370d3d1decfabdde23b375ad"},
+    {file = "deeplake-4.1.6-cp38-cp38-manylinux2014_x86_64.whl", hash = "sha256:be0a70916846a74c69632e49046eb9051a321609941eeaef7fddeb99173bd9e4"},
+    {file = "deeplake-4.1.6-cp39-cp39-macosx_10_12_x86_64.whl", hash = "sha256:02932d6cc2d26e27e704823794fc9e5bce46af4767c604ec2f299b8146d2fdae"},
+    {file = "deeplake-4.1.6-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:93580e25bb44f12dd8413df508ee3e4eb5b554ab45d905ff363b935f389f6b6f"},
+    {file = "deeplake-4.1.6-cp39-cp39-manylinux2014_aarch64.whl", hash = "sha256:6e3130c93c7a1489fab756b2b0cdab915925db4b2d718432984e5567533c825b"},
+    {file = "deeplake-4.1.6-cp39-cp39-manylinux2014_x86_64.whl", hash = "sha256:5ba08ad1511a27ef3f594cfcf3ec8010eb35ac6016e0598d036190a43113e255"},
+]
+
+[package.dependencies]
+numpy = "*"
+
+[[package]]
 name = "defusedxml"
 version = "0.7.1"
 description = "XML bomb protection for Python stdlib modules"
@@ -2166,6 +2204,31 @@ cli = ["click (==8.*)", "pygments (==2.*)", "rich (>=10,<14)"]
 http2 = ["h2 (>=3,<5)"]
 socks = ["socksio (==1.*)"]
 zstd = ["zstandard (>=0.18.0)"]
+
+[[package]]
+name = "hub"
+version = "3.0.1"
+description = "Activeloop Deep Lake"
+optional = false
+python-versions = "*"
+files = [
+    {file = "hub-3.0.1-py3-none-any.whl", hash = "sha256:16d20fbf44700b438dc372d697ee683f0d7c58b178ad01d2daf81efe88bc692d"},
+    {file = "hub-3.0.1.tar.gz", hash = "sha256:3866425914ed522090f0634887f06ff77517e8e6d7b9370e42009d774b725514"},
+]
+
+[package.dependencies]
+deeplake = "*"
+
+[[package]]
+name = "huggingface"
+version = "0.0.1"
+description = "HuggingFace is a single library comprising the main HuggingFace libraries."
+optional = false
+python-versions = "*"
+files = [
+    {file = "huggingface-0.0.1-py3-none-any.whl", hash = "sha256:98a3409537557cd2fd768997ef94cab08529f86c5e106e6d54bbabdd5ee03910"},
+    {file = "huggingface-0.0.1.tar.gz", hash = "sha256:0a2f228fd956801d68b7c6a8bef478dfa60c4b7d7eba572ea7de39ecf87e505a"},
+]
 
 [[package]]
 name = "hyperlink"
@@ -5599,6 +5662,17 @@ files = [
 ]
 
 [[package]]
+name = "python-multipart"
+version = "0.0.20"
+description = "A streaming multipart parser for Python"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "python_multipart-0.0.20-py3-none-any.whl", hash = "sha256:8a62d3a8335e06589fe01f2a3e178cdcc632f3fbe0d492ad9ee0ec35aab1f104"},
+    {file = "python_multipart-0.0.20.tar.gz", hash = "sha256:8dd0cab45b8e23064ae09147625994d090fa46f5b0d1e13af944c331a7fa9d13"},
+]
+
+[[package]]
 name = "python-slugify"
 version = "8.0.4"
 description = "A Python slugify application that also handles Unicode"
@@ -8023,4 +8097,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "23e9aded89ff826a23f8df1ce3c1749186cd9580fb489d41248512d5ac50ce7d"
+content-hash = "35f9d1898f5c47eced4161b34df1f294d53aa191faca5be784f9c0ccb90e86e1"
