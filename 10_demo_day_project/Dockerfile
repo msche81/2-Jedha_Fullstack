@@ -6,9 +6,6 @@ ENV HOME=/home/user \
     PATH=/home/user/.local/bin:$PATH \
     PORT=7860
 
-# Correctement pointer vers le fichier credentials AWS dans /home/user/app/
-ENV AWS_SHARED_CREDENTIALS_FILE=/home/user/app/.aws/credentials
-
 # Définition du répertoire de travail
 WORKDIR $HOME/app
 
@@ -25,9 +22,6 @@ RUN pip install --no-cache-dir -r /home/user/app/requirements.txt
 
 # S'assurer que run.sh est exécutable
 RUN chmod +x /home/user/app/run.sh
-
-# Sécuriser les credentials AWS
-RUN chmod 600 /home/user/app/.aws/credentials
 
 # Accorder les bonnes permissions pour éviter les problèmes d'accès
 RUN chmod -R 777 /home/user/app  
