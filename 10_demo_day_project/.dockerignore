@@ -1,0 +1,18 @@
+# Fichiers système
+.DS_Store
+
+# Credentials sensibles (ils doivent être injectés avec des variables d’environnement)
+aws_credentials.json
+kaggle.json
+
+# Dataset (si on ne veut pas qu’il soit inclus dans l’image)
+oily-dry-and-normal-skin-types-dataset.zip
+Oily-Dry-Skin-Types/
+
+# Logs et cache
+__pycache__/
+*.pyc
+mlruns/  # On ne charge pas l'historique dans Docker, juste le modèle final
+
+# Scripts inutiles pour l’exécution
+upload_to_s3.py

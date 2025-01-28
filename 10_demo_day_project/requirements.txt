@@ -1,0 +1,9 @@
+tensorflow
+numpy
+pandas
+matplotlib
+mlflow
+fastapi
+uvicorn
+streamlit
+boto3

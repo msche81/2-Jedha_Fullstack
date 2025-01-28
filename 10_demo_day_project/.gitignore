@@ -1,6 +1,27 @@
+# Fichiers système macOS
 .DS_Store
+
+# Credentials sensibles
 aws_credentials.json
-bucket_policy.json
+kaggle.json
+
+# Historique MLflow local (on ne versionne que les modèles finaux)
+mlruns/
+
+# Dataset (pas besoin de le versionner, il peut être téléchargé)
 oily-dry-and-normal-skin-types-dataset.zip
-__pycache__
-Oily-Dry-Skin-Types
+Oily-Dry-Skin-Types/
+
+# Fichiers d'entraînement (on garde seulement le modèle final)
+skin_dataset_custom_cnn.ipynb
+skin_dataset_custom_cnn.py
+skin_dataset_custom_cnn_mlflow.py
+skin_dataset_efficientnet.ipynb
+skin_dataset_mobilenetv2.ipynb
+skin_dataset_efficientnet.py
+skin_dataset_mobilenetv2.py
+skin_dataset_mobilenetv2_mlflow.py
+skin_dataset_efficientnet_mlflow.py
+
+# Scripts spécifiques qui ne sont pas nécessaires pour le déploiement
+upload_to_s3.py
