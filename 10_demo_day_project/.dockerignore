@@ -16,3 +16,6 @@ mlruns/  # On ne charge pas l'historique dans Docker, juste le modèle final
 
 # Scripts inutiles pour l’exécution
 upload_to_s3.py
+
+# eviter les sous modules si un .git était automatiquement crée dans le dossier projet
+.git
