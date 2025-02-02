@@ -1,21 +1,60 @@
-# Fichiers système
+# ==========================
+# SYSTEM FILES (macOS, IDE)
+# ==========================
 .DS_Store
+.vscode/
+.idea/
 
-# Credentials sensibles (ils doivent être injectés avec des variables d’environnement)
-aws_credentials.json
+# ==========================
+# CREDENTIALS (security best practices)
+# ==========================
+credentials.env
 kaggle.json
+bucket_policy.json  # AWS policy file (not needed in the container)
+skin-dataset-project.pem
 
-# Dataset (si on ne veut pas qu’il soit inclus dans l’image)
+# ==========================
+# DATASETS (raw data should not be included)
+# ==========================
 oily-dry-and-normal-skin-types-dataset.zip
 Oily-Dry-Skin-Types/
 
-# Logs et cache
+# ==========================
+# LOGS & CACHE FILES (avoid unnecessary files)
+# ==========================
 __pycache__/
 *.pyc
-mlruns/  # On ne charge pas l'historique dans Docker, juste le modèle final
+mlruns/  # MLflow experiment tracking, only final model should be kept
+*.log  # Any log files
 
-# Scripts inutiles pour l’exécution
-upload_to_s3.py
+# ==========================
+# TRAINING SCRIPTS & NOTEBOOKS (these are only for development)
+# ==========================
+*.ipynb  # All Jupyter notebooks
 
-# eviter les sous modules si un .git était automatiquement crée dans le dossier projet
+# CNN & MLflow scripts (we will only deploy the final chosen model)
+script_execution.py
+script_execution_colab.py
+skin_dataset_custom_cnn.py
+skin_dataset_custom_cnn_mlflow.py
+skin_dataset_efficientnet.py
+skin_dataset_efficientnet_mlflow.py
+skin_dataset_mobilenetv2.py
+skin_dataset_mobilenetv2_mlflow.py
+
+# ==========================
+# DEPLOYMENT-UNNECESSARY SCRIPTS
+# ==========================
+upload_to_s3.py  # Only needed for dataset management
+
+# ==========================
+# TEMPORARY FILES & BACKUPS
+# ==========================
+*.tmp
+*.bak
+*.swp
+
+# ==========================
+# GIT FILES (avoid including version control metadata)
+# ==========================
 .git

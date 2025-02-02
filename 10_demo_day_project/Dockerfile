@@ -1,37 +1,34 @@
-# Utilisation d'une image Python légère
+# Use a lightweight Python image
 FROM python:3.10-slim
 
-# Définition des variables d'environnement
+# Set environment variables
 ENV HOME=/home/user \
     PATH=/home/user/.local/bin:$PATH \
     PORT=7860
 
-# Définition du répertoire de travail
+# Define working directory
 WORKDIR $HOME/app
 
-# Installation des outils de base
+# Install essential system tools
 RUN apt-get update -y && \
     apt-get install -y nano curl && \
-    apt-get clean
+    rm -rf /var/lib/apt/lists/*  # Reduce image size by clearing cache
 
-# Copier tous les fichiers du projet
+# Copy project files
 COPY . /home/user/app
 
-# Installation des dépendances depuis requirements.txt
-RUN pip install --no-cache-dir -r /home/user/app/requirements.txt
+# Install dependencies
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-# S'assurer que run.sh est exécutable
-RUN chmod +x /home/user/app/run.sh
+# Ensure run.sh is executable (if it exists)
+RUN chmod +x run.sh || true
 
-# Accorder les bonnes permissions pour éviter les problèmes d'accès
-RUN chmod -R 777 /home/user/app  
+# Grant proper permissions (only if necessary)
+RUN chmod -R 755 .
 
-# Vérifier où est installé uvicorn (si besoin pour FastAPI)
-RUN which uvicorn
-RUN python -m uvicorn --version  
+# Expose the correct port for Hugging Face
+EXPOSE $PORT  
 
-# Exposer le bon port pour Hugging Face
-EXPOSE 7860                                              
-
-# Commande par défaut pour démarrer l’application
-CMD ["sh", "-c", "/usr/local/bin/python -m uvicorn app:app --host 0.0.0.0 --port $PORT"]
+# Default command to start the application
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]

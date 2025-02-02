@@ -3,12 +3,20 @@ import zipfile
 import tensorflow as tf
 import numpy as np
 import pandas as pd
+import mlflow
+import mlflow.tensorflow
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization, Input
 from tensorflow.keras.regularizers import l2
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping
+
+# ----------------------
+# 📌 Configurer MLflow
+# ----------------------
+mlflow.set_tracking_uri("http://localhost:5001")  # Définir l'URI de suivi local pour MLflow
+mlflow.set_experiment("Skin_Type_Classification_custom_cnn")  # Nom de l'expérience MLflow
 
 # ----------------------
 # 📌 Téléchargement et Extraction du Dataset
@@ -99,10 +107,26 @@ model.summary()
 num_epochs = 20
 early_stopping = EarlyStopping(monitor="val_loss", patience=2, restore_best_weights=True, verbose=1)
 
-history = model.fit(
-    train_generator,
-    epochs=num_epochs,
-    validation_data=valid_generator,
-    callbacks=[early_stopping],
-    verbose=1
-)
+# Démarrer un run dans MLflow
+with mlflow.start_run():
+    mlflow.log_param("learning_rate", learning_rate)
+    mlflow.log_param("epochs", num_epochs)
+
+    # Entraînement du modèle et logging des métriques
+    history = model.fit(
+        train_generator,
+        epochs=num_epochs,
+        validation_data=valid_generator,
+        callbacks=[early_stopping],
+    )
+
+    # Log des métriques
+    mlflow.log_metric("final_train_accuracy", history.history['accuracy'][-1])
+    mlflow.log_metric("final_val_accuracy", history.history['val_accuracy'][-1])
+    mlflow.log_metric("final_train_loss", history.history['loss'][-1])
+    mlflow.log_metric("final_val_loss", history.history['val_loss'][-1])
+
+    # Sauvegarder le modèle dans MLflow
+    mlflow.tensorflow.log_model(model, "models/custom_cnn_skin_classifier")
+
+    print("✅ Model training and tracking completed successfully!")

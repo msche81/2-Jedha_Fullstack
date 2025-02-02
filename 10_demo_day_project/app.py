@@ -1,6 +1,18 @@
 import streamlit as st
 from PIL import Image
 import numpy as np
+import io
+import requests
+
+# FastAPI Endpoint
+API_URL = "https://MSInTech/skin-dataset-project.hf.space"
+
+# ✅ Vérification automatique de la connexion à FastAPI
+try:
+    response = requests.get(f"{API_URL}/health", timeout=3)
+    api_status = response.json()["status"] if response.status_code == 200 else "❌ API non disponible"
+except:
+    api_status = "❌ API non disponible"
 
 # Configuration de la page avec nouvelle icône
 st.set_page_config(

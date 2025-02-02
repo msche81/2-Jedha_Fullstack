@@ -1,9 +1,25 @@
+# Core dependencies
 tensorflow
 numpy
 pandas
 matplotlib
+
+# Backend API & Deployment
 mlflow
 fastapi
 uvicorn
+
+# Frontend (Streamlit app)
 streamlit
+
+# AWS interactions
 boto3
+
+# Image processing (needed for handling skin images)
+Pillow
+
+# Machine Learning utilities
+scikit-learn
+
+# FastAPI = gestion des fichiers envoyés
+python-multipart

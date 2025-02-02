@@ -4,6 +4,8 @@
 # Credentials sensibles
 aws_credentials.json
 kaggle.json
+credentials.env
+skin-dataset-project.pem
 
 # Historique MLflow local (on ne versionne que les modèles finaux)
 mlruns/
