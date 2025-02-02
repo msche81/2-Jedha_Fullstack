@@ -54,7 +54,7 @@ graphviz = "^0.20.3"
 imageio = "^2.36.1"
 scikit-image = "^0.25.0"
 tensorflow-docs = {git = "https://github.com/tensorflow/docs"}
-mlflow = "^2.19.0"
+mlflow = {extras = ["extras"], version = "^2.20.1"}
 uvicorn = "^0.34.0"
 fastapi = "^0.115.6"
 kaggle = "^1.6.17"
