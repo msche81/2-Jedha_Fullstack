@@ -4,8 +4,8 @@ import numpy as np
 import io
 import requests
 
-# FastAPI Endpoint
-API_URL = "https://MSInTech/skin-dataset-project.hf.space"
+# **API Endpoint**
+API_URL = "https://<your-hugging-face-space>/predict"  # Mettez à jour avec l'URL exacte de votre Hugging Face API
 
 # ✅ Vérification automatique de la connexion à FastAPI
 try:
@@ -141,16 +141,26 @@ if uploaded_file is not None:
     with col2:
         # ✅ **Bouton fonctionnel avec Streamlit**
         if st.button("Click here to predict your Skin Type!"):
-            skin_type = np.random.choice(["Oily", "Dry", "Normal"])
+            # Envoi de l'image au serveur pour la prédiction
+            image_data = np.array(image) / 255.0  # Normalisation de l'image
+            image_data = np.expand_dims(image_data, axis=0)
 
-            # ✅ Texte affichant le type de peau SANS le cadre vert
+            # Effectuer la prédiction en envoyant l'image au backend via FastAPI
+            try:
+                response = requests.post(f"{API_URL}/predict", files={"file": uploaded_file.getvalue()})
+                prediction_data = response.json()
+                skin_type = prediction_data.get("skin_type", "Unknown")
+            except Exception as e:
+                skin_type = "Error in prediction"
+
+            # Afficher la prédiction
             st.markdown(
                 f"""
                 <p style='font-size:28px; font-weight:bold; text-align:center; color:#1C4C6A;'>
                     Your skin is classified as
                 </p>
                 <p style='font-size:38px; font-weight:bold; text-align:center; color:#FF8C00;'>
-                {skin_type}
+                    {skin_type}
                 </p>
                 """,
                 unsafe_allow_html=True
@@ -158,7 +168,7 @@ if uploaded_file is not None:
 
             st.divider()
 
-            # ✅ Conseils spécifiques au type de peau avec checkmarks √ en orange
+            # Conseils pour le soin de la peau
             if skin_type == "Oily":
                 st.markdown(
                     """

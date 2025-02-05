@@ -1,3 +1,13 @@
+---
+title: Skin Type Classifier
+emoji: 🎭
+colorFrom: blue
+colorTo: pink
+sdk: docker
+app_file: main.py
+pinned: false
+---
+
 ### **🧑‍⚕️ Skin Type Classifier - AI-Powered Skincare Recommendation**
 🚀 **Powered by FastAPI & Streamlit | Deployed on Hugging Face Spaces**
 

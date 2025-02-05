@@ -27,8 +27,8 @@ bucket_name = "skin-dataset-project"
 # --------------------
 # 📌 Configurer MLflow en local avec tracking URI
 # --------------------
-mlflow.set_tracking_uri("http://localhost:5001")
-mlflow.set_experiment("Skin_Type_Classification_custom_cnn")
+mlflow.set_tracking_uri("http://localhost:5001")  # URI de suivi MLflow local
+mlflow.set_experiment("custom_cnn_skin_type_classification")  # Nom de l'expérience
 
 # --------------------
 # 📌 Initialisation de S3 pour MLflow (en local, on n'a plus besoin de S3)
@@ -100,6 +100,22 @@ if train_generator.samples == 0 or valid_generator.samples == 0:
     raise ValueError("❌ Dataset vide ! Vérifie tes chemins.")
 
 # --------------------
+# 📌 Définir la fonction f1_score_custom
+# --------------------
+def f1_score_custom(y_true, y_pred):
+    y_true = tf.cast(y_true, tf.float32)
+    y_pred = tf.cast(tf.greater_equal(y_pred, 0.5), tf.float32)  # Seuil de 0.5
+
+    tp = tf.reduce_sum(tf.cast(tf.equal(y_true * y_pred, 1), tf.float32))  # True Positives
+    fp = tf.reduce_sum(tf.cast(tf.equal(y_true * (1 - y_pred), 0), tf.float32))  # False Positives
+    fn = tf.reduce_sum(tf.cast(tf.equal((1 - y_true) * y_pred, 0), tf.float32))  # False Negatives
+
+    precision = tp / (tp + fp + tf.keras.backend.epsilon())  # Precision
+    recall = tp / (tp + fn + tf.keras.backend.epsilon())  # Recall
+
+    return 2 * (precision * recall) / (precision + recall + tf.keras.backend.epsilon())  # F1-scor
+
+# --------------------
 # 📌 Construction du modèle CNN
 # --------------------
 model = Sequential([
@@ -134,7 +150,7 @@ model = Sequential([
 learning_rate = 0.0005  # Réduire légèrement le taux d'apprentissage pour une meilleure convergence
 model.compile(optimizer=Adam(learning_rate=learning_rate),
               loss='categorical_crossentropy', 
-              metrics=['accuracy', 'AUC', 'Precision', 'Recall'])  # Pas de F1-score ici
+              metrics=['accuracy', AUC(), Precision(), Recall(), f1_score_custom])  # F1-score ajouté
 
 model.summary()
 
@@ -153,15 +169,7 @@ history = model.fit(
 )
 
 # --------------------
-# 📌 Log F1-score
-# --------------------
-y_true = np.argmax(valid_generator.classes, axis=1)  # Labels vrais
-y_pred = np.argmax(model.predict(valid_generator), axis=1)  # Prédictions
-f1 = f1_score(y_true, y_pred, average='weighted')  # Calculer le F1-score
-mlflow.log_metric("final_f1_score", f1)  # Loguer dans MLflow
-
-# --------------------
-# 📌 Logging des métriques et enregistrement du modèle
+# 📌 Log des métriques dans MLflow
 # --------------------
 mlflow.log_param("learning_rate", learning_rate)
 mlflow.log_param("epochs", num_epochs)
@@ -173,9 +181,30 @@ mlflow.log_metric("final_train_precision", history.history['precision'][-1])
 mlflow.log_metric("final_val_precision", history.history['val_precision'][-1])
 mlflow.log_metric("final_train_recall", history.history['recall'][-1])
 mlflow.log_metric("final_val_recall", history.history['val_recall'][-1])
+mlflow.log_metric("final_train_f1_score", history.history['f1_score_custom'][-1])
+mlflow.log_metric("final_val_f1_score", history.history['val_f1_score_custom'][-1])
 
-# 📌 Sauvegarde du modèle et des indices des classes
-mlflow.tensorflow.log_model(model, artifact_path="models/cnn_skin_classifier")
-mlflow.log_dict(train_generator.class_indices, "class_indices.json")
+# --------------------
+# 📌 Enregistrer et loguer le modèle
+# --------------------
+model_name = "cnn_skin_classifier"
+with mlflow.start_run():
+    # Log du modèle dans un répertoire spécifique au run
+    mlflow.tensorflow.log_model(model, artifact_path=f"models/{model_name}")
+    
+    # Enregistrer le modèle dans le registre global
+    model_uri = f"runs:/{mlflow.active_run().info.run_id}/models/{model_name}"
+    mlflow.register_model(model_uri, model_name)
+    
+    # Copier le modèle vers latest_model
+    latest_model_path = f"s3://skin-dataset-project/deployment/custom_cnn_skin_classifier/latest_model/model.keras"
+    s3.copy_object(
+        Bucket="skin-dataset-project",
+        CopySource=f"skin-dataset-project/deployment/{mlflow.active_run().info.experiment_id}/{mlflow.active_run().info.run_id}/models/{model_name}/model.keras",
+        Key=latest_model_path
+    )
+    
+    # Enregistrer les indices des classes
+    mlflow.log_dict(train_generator.class_indices, "class_indices.json")
 
 print("✅ Model training and tracking completed successfully!")

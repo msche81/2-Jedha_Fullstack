@@ -21,14 +21,12 @@ COPY . /home/user/app
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
-# Ensure run.sh is executable (if it exists)
-RUN chmod +x run.sh || true
-
-# Grant proper permissions (only if necessary)
-RUN chmod -R 755 .
+# Copy and make run.sh executable
+COPY run.sh /run.sh
+RUN chmod +x /run.sh
 
 # Expose the correct port for Hugging Face
 EXPOSE $PORT  
 
-# Default command to start the application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
+# Start the container with run.sh
+CMD ["/run.sh"]
