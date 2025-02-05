@@ -28,4 +28,4 @@ __pycache__/
 /5_big-data/1-Distributed-Computing-RDD/config.py
 
 # Ignore Database for the Demo Day Project
-/Demo_Day_Project/src/oily-dry-and-normal-skin-types-dataset.zi
+/Demo_Day_Project/src/oily-dry-and-normal-skin-types-dataset.zip
