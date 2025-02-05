@@ -26,3 +26,6 @@ __pycache__/
 
 # Ignore Databricks credentials in Big Data
 /5_big-data/1-Distributed-Computing-RDD/config.py
+
+# Ignore Database for the Demo Day Project
+/Demo_Day_Project/src/oily-dry-and-normal-skin-types-dataset.zi
