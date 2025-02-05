@@ -30,3 +30,5 @@ __pycache__/
 # Ignore Database for the Demo Day Project
 /Demo_Day_Project/src/oily-dry-and-normal-skin-types-dataset.zip
 /Demo_Day_Project/scripts/skin_type_classifier_model.h5
+Demo_Day_Project/src/oily-dry-and-normal-skin-types-dataset.zip
+Demo_Day_Project/scripts/skin_type_classifier_model.h5
