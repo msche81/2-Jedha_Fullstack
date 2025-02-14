@@ -38,8 +38,8 @@ app = FastAPI(
 )
 
 # ✅ Configuration de MLflow & S3
-S3_BUCKET = "skin-dataset-project"
-S3_MODEL_PATH = "deployment/mobilenetv2_skin_classifier/latest_model/model.keras"  # Utiliser 'latest_model' en attendant la structure exacte
+S3_BUCKET = "skin-dataset-project-final"
+S3_MODEL_PATH = "deployment/2/a1d3f171f7a846c88814497294900a99/artifacts/model/data/model.keras"
 LOCAL_MODEL_PATH = "/tmp/model.keras"  # 📌 Fichier temporaire local
 
 # 🔥 Télécharger le modèle depuis S3
@@ -99,4 +99,4 @@ async def predict_skin_type(file: UploadFile = File(...)):
 
 # ✅ Lancer l'API
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=int(os.getenv("PORT", 7860)))
+    uvicorn.run(app, host="0.0.0.0", port=int(os.getenv("PORT", 8000)))

@@ -5,7 +5,7 @@ import io
 import requests
 
 # **API Endpoint**
-API_URL = "https://<your-hugging-face-space>/predict"  # Mettez à jour avec l'URL exacte de votre Hugging Face API
+API_URL = "https://msintech-skin-dataset-project-final-api.hf.space/predict"
 
 # ✅ Vérification automatique de la connexion à FastAPI
 try:
